@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jô Aguiar • Treinamento Mental & Neurociência do Esporte</title>
+
+<style>
+ :root{
+  --bg:#141414;          /* grafite profundo */
+  --panel:#1e1e1e;       /* painel mais sofisticado */
+  --text:#ffffff;
+  --muted:#d6d6d6;       /* levemente mais claro */
+  --line:#2a2a2a;        /* linha mais suave */
+  --cta:#ffb400;
+  --ctaHover:#e0a000;
+  --good:#4ade80;
+}
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:64px 20px;
+  }
+
+  /* Topbar */
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15,15,15,.88);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  .topbar__inner{
+    max-width:1100px;
+    margin:auto;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    font-weight:1000;
+    letter-spacing:.2px;
+    font-size:14px;
+  }
+  .nav{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .nav a{
+    color: var(--muted);
+    text-decoration:none;
+    font-weight:900;
+    font-size:14px;
+  }
+  .nav a:hover{ color:#fff; }
+
+  /* Buttons */
+  .btn{
+    display:inline-block;
+    padding:14px 22px;
+    background: var(--cta);
+    color:#000;
+    font-weight:1000;
+    text-decoration:none;
+    border-radius:12px;
+    font-size:16px;
+    transition: .2s;
+  }
+  .btn:hover{ background: var(--ctaHover); }
+  .btnSmall{ padding:10px 14px; font-size:14px; border-radius:10px; }
+
+  .btnOutline{
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,180,0,.55);
+  }
+  .btnOutline:hover{
+    border-color: rgba(255,180,0,.9);
+    background: rgba(255,180,0,.08);
+  }
+
+  /* Hero */
+  .hero{
+    padding-top:18px;
+  }
+  .heroGrid{
+    display:flex;
+    gap:44px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .heroLeft{ flex:1; min-width:320px; }
+  .heroRight{ flex:0 0 360px; }
+
+  h1{
+    margin:0 0 12px;
+    font-size:44px;
+    line-height:1.06;
+    text-transform: uppercase;
+    letter-spacing:.7px;
+  }
+  .sub{
+    margin:0 0 18px;
+    font-size:18px;
+    color: var(--muted);
+    line-height:1.65;
+    max-width: 760px;
+  }
+
+  .pillRow{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:18px 0 18px;
+  }
+  .pill{
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:900;
+  }
+
+  .panel{
+    background: var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+  }
+
+  .photo{
+    width:100%;
+    max-width:360px;
+    height:auto;
+    border-radius:18px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.02);
+    display:block;
+  }
+
+  .divider{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:70px 0;
+  }
+
+  /* Section headings */
+  h2{
+    margin:0 0 12px;
+    font-size:28px;
+  }
+  .text{
+    margin:0 0 14px;
+    color: var(--muted);
+    line-height:1.7;
+    font-size:18px;
+  }
+
+  /* Cards */
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap:16px;
+  }
+  .card{
+    background: var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    min-height: 250px;
+  }
+  .cardTop{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .cardImg{
+    width:92px;
+    height:auto;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.02);
+    flex:0 0 auto;
+  }
+  .card h3{
+    margin:0;
+    font-size:16px;
+    text-transform: uppercase;
+    letter-spacing:.5px;
+    line-height:1.25;
+  }
+  .card p{
+    margin:0;
+    color: var(--muted);
+    line-height:1.55;
+    font-size:15px;
+  }
+  .tag{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(255,180,0,.45);
+    background: rgba(255,180,0,.10);
+    color: var(--cta);
+    font-weight:1000;
+    font-size:12px;
+    letter-spacing:.4px;
+    text-transform: uppercase;
+    margin-top:8px;
+  }
+  .tagGood{
+    border-color: rgba(74,222,128,.45);
+    background: rgba(74,222,128,.10);
+    color: var(--good);
+  }
+  .cardActions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:auto;
+  }
+  .smallLink{
+    color: var(--muted);
+    font-weight:900;
+    text-decoration:none;
+    font-size:14px;
+    border-bottom:1px dashed rgba(255,255,255,.25);
+    padding-bottom:2px;
+  }
+  .smallLink:hover{ color:#fff; border-bottom-color: rgba(255,255,255,.55); }
+
+  /* Mentoria box */
+  .mentorBox{
+    background: linear-gradient(180deg, rgba(255,180,0,.14), rgba(255,180,0,.05));
+    border:1px solid rgba(255,180,0,.45);
+    border-radius:18px;
+    padding:22px;
+  }
+  .mentorTitle{
+    margin:0 0 10px;
+    font-size:22px;
+    font-weight:1000;
+    text-transform: uppercase;
+    letter-spacing:.6px;
+    line-height:1.25;
+  }
+
+  /* Footer */
+  .footer{
+    border-top:1px solid var(--line);
+    margin-top:70px;
+    padding:26px 0;
+    color: var(--muted);
+    font-size:14px;
+    text-align:center;
+  }
+  .footer a{
+    color: var(--cta);
+    text-decoration:none;
+    font-weight:1000;
+  }
+  .footer a:hover{ color:#fff; }
+
+  @media (max-width: 980px){
+    .cards{ grid-template-columns: 1fr; }
+    h1{ font-size:34px; }
+    .btn{ width:100%; text-align:center; }
+    .heroRight{ flex-basis:100%; }
+    .cardTop{ align-items:center; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">Jô Aguiar • Treinamento Mental & Neurociência do Esporte</div>
+    <div class="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#mentoria">Mentoria</a>
+      <a class="btn btnSmall btnOutline" href="https://instagram.com/_mental_trainer" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div class="container hero">
+
+  <!-- HERO -->
+  <div class="heroGrid">
+    <div class="heroLeft">
+      <h1>Treinamento mental para atletas que querem performar sob pressão</h1>
+
+      <p class="sub">
+        Método claro, direto e aplicável para melhorar foco, autocontrole e desempenho no tatame.
+        Produtos digitais e livro físico para você evoluir com consistência — sem complicação.
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">Neurociência aplicada</span>
+        <span class="pill">Alta performance</span>
+        <span class="pill">Rotina mental</span>
+        <span class="pill">Controle sob pressão</span>
+      </div>
+
+      <div class="cardActions">
+        <a class="btn" href="#produtos">Ver produtos</a>
+        <a class="btn btnOutline" href="#mentoria">Quero mentoria</a>
+      </div>
+
+      <p style="margin:14px 0 0; color:var(--muted); font-size:14px;">
+        Acesso imediato aos PDFs via Hotmart • Livro físico sob demanda via Uiclap
+      </p>
+    </div>
+
+    <div class="heroRight">
+      <!-- ✅ CORRIGIDO: era img/jo.jpg -->
+     <img class="photo" src="img/jo.jpg" alt="Jô Aguiar — Treinadora Mental Esportiva">
+      <div class="panel" style="margin-top:12px;">
+        <strong style="display:block; font-size:14px; letter-spacing:.3px; text-transform:uppercase;">
+          Autoridade construída na prática
+        </strong>
+        <p style="margin:10px 0 0; color:var(--muted); line-height:1.6;">
+          Treinadora mental esportiva com abordagem prática e científica.
+          <br><br>
+          <span style="color:#fff; font-weight:1000;">6 livros publicados</span> e materiais aplicáveis para atletas e professores.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SOBRE -->
+  <div id="sobre" class="panel">
+    <h2>Sobre mim</h2>
+    <p class="text">
+      Eu sou a <strong>Jô Aguiar</strong>, treinadora mental esportiva. Meu trabalho une neurociência aplicada, disciplina e estratégia
+      para ajudar atletas a performarem com clareza e consistência — especialmente em ambientes de pressão.
+    </p>
+    <p class="text" style="margin-bottom:0;">
+      Além do acompanhamento individual, eu crio materiais objetivos e práticos: <strong>eBooks, livros e guias</strong> para você aplicar no treino
+      e evoluir rapidamente (com método e sem linguagem complicada).
+    </p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PRODUTOS -->
+  <div id="produtos">
+    <h2>Produtos</h2>
+    <p class="text">Escolha um ponto de entrada e avance no seu ritmo.</p>
+
+    <div class="cards">
+
+     <!-- Respiração -->
+      <div class="card">
+        <div class="cardTop">
+          <img class="cardImg" src="img/respiracao.png" alt="Capa: Treinamento Respiratório para Atletas de Jiu-Jitsu">
+          <div>
+            <h3>eBook • Treinamento Respiratório</h3>
+            <p>Para quem perde o gás antes do final: treino simples e prático para automatizar respiração sob estresse.</p>
+            <span class="tag tagGood">Low ticket • aplicação imediata</span>
+          </div>
+        </div>
+        <div class="cardActions">
+          <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+            Comprar na Hotmart
+          </a>
+          <!-- ✅ CORRIGIDO: era landing-respiratorio -->
+          <a class="btn btnOutline" href="../landing-respiracao/index.html">
+            Ver página
+          </a>
+        </div>
+      </div>
+
+      <!-- Treinamento Mental -->
+      <div class="card">
+        <div class="cardTop">
+          <img class="cardImg" src="img/mental.png" alt="Capa: Treinamento Mental para Atletas de Jiu-Jitsu">
+          <div>
+            <h3>Livro • Treinamento Mental para Atletas de Jiu-Jitsu</h3>
+            <p>Estrutura completa para foco, rotina mental e performance. Ideal para atletas e professores.</p>
+            <span class="tag">Produto de autoridade</span>
+          </div>
+        </div>
+
+        <div class="cardActions">
+          <a class="btn" href="https://loja.uiclap.com/titulo/ua149072/" target="_blank" rel="noopener">Comprar livro físico</a>
+          <a class="smallLink" href="https://pay.hotmart.com/V104593301J" target="_blank" rel="noopener">
+            Prefere PDF? Acesso imediato (Hotmart)
+          </a>
+        </div>
+      </div>
+
+      <!-- Meu Primeiro Kimono -->
+      <div class="card">
+        <div class="cardTop">
+          <img class="cardImg" src="img/kimono.png" alt="Capa: Meu Primeiro Kimono">
+          <div>
+            <h3>PDF • Meu Primeiro Kimono</h3>
+            <p>Gibi para colorir com as primeiras regras e expectativas do primeiro dia no tatame (pais, professores e crianças).</p>
+            <span class="tag tagGood">Infantil • ideal para academias</span>
+          </div>
+        </div>
+        <div class="cardActions">
+          <a class="btn" href="https://pay.hotmart.com/Y104593472H" target="_blank" rel="noopener">Comprar na Hotmart</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MENTORIA -->
+<div id="mentoria" class="mentorBox" style="padding:40px;">
+
+  <h2 style="font-size:30px; margin-bottom:10px;">
+    Mentoria Individual para Atletas que Querem Virar a Chave Mental
+  </h2>
+
+  <p class="text" style="font-size:18px; max-width:850px;">
+    Você treina forte. Mas na hora decisiva, sente que algo trava?
+  </p>
+
+  <div style="margin:25px 0;">
+    <p style="margin:6px 0;">• Perde o foco quando o adversário pressiona?</p>
+    <p style="margin:6px 0;">• Compete abaixo do que treina?</p>
+    <p style="margin:6px 0;">• Fica emocionalmente instável antes da luta?</p>
+    <p style="margin:6px 0;">• Sente que poderia render muito mais?</p>
+  </div>
+
+  <p class="text" style="font-size:18px; max-width:850px;">
+    Na mentoria, você aprende a:
+  </p>
+
+  <div style="margin:15px 0 25px;">
+    <p style="margin:6px 0;">✔ Criar rotina mental pré-competição</p>
+    <p style="margin:6px 0;">✔ Controlar seu estado emocional sob pressão</p>
+    <p style="margin:6px 0;">✔ Desenvolver foco treinável</p>
+    <p style="margin:6px 0;">✔ Competir com confiança construída</p>
+  </div>
+
+  <p style="color:var(--muted); max-width:850px;">
+    Método aplicado por treinadora mental esportiva com abordagem prática e científica.
+  </p>
+
+  <div class="cardActions" style="margin-top:30px;">
+    <a class="btn"
+       href="https://wa.me/5548996070752?text=Ol%C3%A1%20J%C3%B4,%20vim%20pela%20mentoria%20individual%20e%20quero%20acelerar%20minha%20performance."
+       target="_blank" rel="noopener">
+       Quero aplicar para mentoria
+    </a>
+
+    <a class="btn btnOutline"
+       href="https://instagram.com/_mental_trainer"
+       target="_blank" rel="noopener">
+       Ver autoridade no Instagram
+    </a>
+  </div>
+
+  <p style="margin-top:20px; color:var(--muted); font-size:14px;">
+    Atendimento 100% online • Estratégia personalizada • Execução prática
+  </p>
+
+</div>
+
+  <p style="margin:14px 0 0; color:var(--muted); font-size:14px;">
+    Atendimento 100% online • Estratégia personalizada • Execução prática
+  </p>
+</div>
+
+  <div class="footer">
+    © Jô Aguiar • Treinamento Mental & Neurociência do Esporte •
+    <a href="https://instagram.com/_mental_trainer" target="_blank" rel="noopener">@_mental_trainer</a>
+  </div>
+
+</div>
+
+</body>
+</html>
