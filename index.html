@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treinamento Respiratório para Atletas de Jiu-Jitsu</title>
+
+<style>
+  :root{
+    --bg:#0f0f0f;
+    --panel:#171717;
+    --text:#ffffff;
+    --muted:#cfcfcf;
+    --line:#2f2f2f;
+    --cta:#ffb400;
+    --ctaHover:#e0a000;
+  }
+
+  /* ✅ AJUSTE: rolagem suave */
+  html{ scroll-behavior: smooth; }
+
+  /* ✅ AJUSTE: compensar topbar fixa ao clicar nos links */
+  #como-funciona, #conteudo, #garantia, #faq{
+    scroll-margin-top: 90px;
+  }
+
+  body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+  }
+
+  /* Topbar */
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15,15,15,.88);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  .topbar__inner{
+    max-width:1100px;
+    margin:auto;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    font-weight:900;
+    letter-spacing:.2px;
+  }
+  .nav{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .nav a{
+    color: var(--muted);
+    text-decoration:none;
+    font-weight:800;
+    font-size:14px;
+  }
+  .nav a:hover{ color:#fff; }
+
+  /* Buttons */
+  .btn{
+    display:inline-block;
+    padding:16px 34px;
+    background: var(--cta);
+    color:#000;
+    font-weight:1000;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:18px;
+    transition: .2s;
+  }
+  .btn:hover{ background: var(--ctaHover); }
+
+  .btnSmall{
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+  }
+
+  /* Hero */
+  .hero{
+    padding:46px 0 10px;
+  }
+  .heroGrid{
+    display:flex;
+    gap:46px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .heroLeft{
+    flex: 1;
+    min-width: 320px;
+  }
+  .heroRight{
+    flex: 0 0 360px;
+    text-align:center;
+  }
+  h1{
+    margin:0 0 12px;
+    font-size:46px;
+    line-height:1.05;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+  }
+  .sub{
+    margin:0 0 16px;
+    font-size:20px;
+    color: var(--muted);
+    line-height:1.5;
+    max-width: 680px;
+  }
+  .micro{
+    margin:14px 0 0;
+    color: var(--muted);
+    font-size:14px;
+  }
+  .pillRow{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:18px 0 12px;
+  }
+  .pill{
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    color: var(--muted);
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:800;
+  }
+
+  .cover{
+    max-width: 340px;
+    width: 100%;
+    height:auto;
+    border-radius:14px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.02);
+  }
+
+  /* Preço */
+  .priceBox{
+    background: linear-gradient(180deg, rgba(255,180,0,.15), rgba(255,180,0,.05));
+    border:1px solid rgba(255,180,0,.45);
+    border-radius:16px;
+    padding:22px;
+    margin-top:18px;
+    max-width:720px;
+  }
+  .priceTop{
+    display:flex;
+    gap:12px;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .oldPrice{
+    color: var(--muted);
+    font-weight:1000;
+    text-decoration: line-through;
+    font-size:18px;
+  }
+  .offTag{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(255,180,0,.45);
+    background: rgba(255,180,0,.12);
+    color: var(--cta);
+    font-weight:1000;
+    font-size:13px;
+    letter-spacing:.4px;
+    text-transform: uppercase;
+  }
+  .newPrice{
+    font-size:42px;
+    font-weight:1000;
+    letter-spacing:.2px;
+    margin:0;
+  }
+  .newPrice small{
+    font-size:16px;
+    color: var(--muted);
+    font-weight:900;
+    margin-left:8px;
+  }
+  .priceNote{
+    margin:10px 0 0;
+    color: var(--muted);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .btnPrice{ margin-top:14px; }
+
+  /* Sections */
+  .section{
+    margin-top:70px;
+    padding-top:10px;
+  }
+  .divider{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:70px 0;
+  }
+
+  .grid2{
+    display:flex;
+    gap:40px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .col{
+    flex:1;
+    min-width: 320px;
+  }
+
+  h2{
+    font-size:30px;
+    margin:0 0 12px;
+  }
+  .text{
+    font-size:18px;
+    line-height:1.65;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+
+  .panel{
+    background: var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+  }
+
+  ul{
+    margin: 14px 0 0;
+    padding-left:18px;
+    color: var(--muted);
+    font-size:18px;
+    line-height:1.6;
+  }
+  li{ margin:8px 0; }
+
+  .img{
+    max-width:100%;
+    height:auto;
+    border-radius:16px;
+    border:1px solid var(--line);
+  }
+
+  .center{ text-align:center; }
+
+  /* Garantia / Selos */
+  .guaranteeBox{
+    background: linear-gradient(180deg, rgba(255,180,0,.12), rgba(255,180,0,.05));
+    border:1px solid rgba(255,180,0,.45);
+    border-radius:16px;
+    padding:24px;
+  }
+  .guaranteeTitle{
+    margin:0 0 10px;
+    font-size:24px;
+    font-weight:1000;
+    text-transform: uppercase;
+    letter-spacing:.6px;
+    line-height:1.2;
+  }
+  .guaranteeTitle span{ color: var(--cta); }
+
+  /* FAQ */
+  details{
+    background: var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    margin:12px 0;
+  }
+  summary{
+    cursor:pointer;
+    font-weight:1000;
+  }
+
+  /* Footer */
+  .footer{
+    border-top:1px solid var(--line);
+    margin-top:70px;
+    padding:26px 0;
+    color: var(--muted);
+    font-size:14px;
+  }
+
+  @media (max-width: 860px){
+    h1{ font-size:34px; }
+    .heroRight{ flex-basis: 100%; }
+    .btn{ width: 100%; text-align:center; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Topbar com CTA -->
+<div class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">Treinamento Respiratório • Jiu-Jitsu</div>
+    <div class="nav">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#conteudo">O que tem dentro</a>
+      <a href="#garantia">Garantia</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btnSmall" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">COMPRAR R$ 37,90</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="container hero">
+  <div class="heroGrid">
+    <div class="heroLeft">
+      <h1>VOCÊ PERDE O GÁS ANTES DO FINAL DA LUTA?</h1>
+
+      <p class="sub">
+        Um método simples e prático para treinar sua respiração e aguentar até o último segundo no tatame —
+        sem complicação e sem “linguagem difícil”.
+      </p>
+
+      <div class="pillRow">
+        <span class="pill">Fácil de entender</span>
+        <span class="pill">Aplicação no dia a dia</span>
+        <span class="pill">Para treino e competição</span>
+      </div>
+
+      <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+        QUERO PARAR DE CANSAR RÁPIDO
+      </a>
+
+      <!-- PREÇO NO TOPO (volume) -->
+      <div class="priceBox">
+        <div class="priceTop">
+          <div class="oldPrice">De R$ 97,00</div>
+          <div class="offTag">61% OFF • valor de entrada</div>
+        </div>
+
+        <p class="newPrice">
+          R$ 37,90 <small>(pagamento único)</small>
+        </p>
+
+        <p class="priceNote">
+          Menos de <strong>R$ 1,30 por dia</strong> (em 30 dias) para parar de “morrer no gás”.
+          <br>
+          <strong>Garantia 7 dias:</strong> ou você aprende a aplicar, ou devolvemos seu dinheiro.
+        </p>
+
+        <a class="btn btnPrice" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+          GARANTIR AGORA POR R$ 37,90
+        </a>
+      </div>
+
+      <p class="micro">
+        Checkout seguro na Hotmart • Acesso imediato após confirmação do pagamento
+      </p>
+    </div>
+
+    <div class="heroRight">
+      <img class="cover" src="img/capa.png" alt="Capa do eBook Treinamento Respiratório para Atletas de Jiu-Jitsu">
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Identificação -->
+  <div class="panel">
+    <h2 style="margin-bottom:10px;">Se você se identificou com isso, esse eBook é pra você:</h2>
+    <ul>
+      <li>cansa rápido no rola e não entende o porquê</li>
+      <li>perde foco sob pressão e “apaga” durante a luta</li>
+      <li>sente que seu corpo aguenta, mas a respiração não acompanha</li>
+      <li>quer um treino simples, curto e aplicável</li>
+    </ul>
+
+    <div style="margin-top:16px;">
+      <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+        QUERO UMA SOLUÇÃO PRÁTICA
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMO FUNCIONA -->
+  <div id="como-funciona" class="section grid2">
+    <div class="col">
+      <img class="img" src="img/atleta.png" alt="Atleta treinando respiração e controle no tatame">
+    </div>
+
+    <div class="col">
+      <h2>Como funciona (simples, direto ao ponto)</h2>
+
+      <p class="text">
+        Você vai entender o essencial do jeito certo — e depois aplicar com um passo a passo prático.
+        A ideia não é “pensar na respiração” na hora da luta.
+        É treinar o padrão respiratório para ele funcionar automaticamente sob estresse.
+      </p>
+
+      <div class="panel">
+        <ul>
+          <li>explicação clara (sem enrolação)</li>
+          <li>treino progressivo para encaixar na rotina</li>
+          <li>foco em: resistência, clareza mental e controle emocional</li>
+        </ul>
+      </div>
+
+      <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+        QUERO TREINAR MINHA RESPIRAÇÃO
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CONTEÚDO -->
+  <div id="conteudo" class="section grid2">
+    <div class="col">
+      <h2>O que tem dentro do eBook</h2>
+      <p class="text">
+        Você vai sair do “eu acho que respiro errado” para um treino estruturado e replicável no dia a dia.
+        É técnico na base — mas prático na execução.
+      </p>
+
+      <div class="panel">
+        <ul>
+          <li>entenda o sistema nervoso (de um jeito simples)</li>
+          <li>por que CO₂ importa e como isso afeta seu “gás”</li>
+          <li>clareza mental sob pressão (o que muda no corpo)</li>
+          <li>treino progressivo para automatizar o padrão respiratório</li>
+          <li>aplicação no tatame: foco, resistência e controle</li>
+        </ul>
+      </div>
+
+      <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+        QUERO ACESSAR AGORA
+      </a>
+    </div>
+
+    <div class="col">
+      <img class="img" src="img/combustivel.png" alt="A respiração é o combustível das suas lutas">
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Linguagem clara -->
+  <div class="panel">
+    <h2 style="margin-bottom:10px;">Linguagem clara, aplicação prática</h2>
+    <p class="text">
+      Mesmo sendo fundamentado em neurociência, o eBook foi escrito para você entender rápido e aplicar no treino.
+      Você vai saber exatamente o que fazer e como encaixar na sua rotina.
+    </p>
+    <p class="text" style="margin-bottom:0;">
+      Ao final, você terá orientação suficiente para treinar seu sistema respiratório sozinho,
+      de forma estruturada e progressiva.
+    </p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- GARANTIA + SELOS -->
+  <div id="garantia" class="section">
+    <div class="guaranteeBox">
+      <p class="guaranteeTitle">
+        GARANTIA <span>7 DIAS</span> — OU VOCÊ APRENDE A RESPIRAR DIREITO, OU A GENTE DEVOLVE SEU DINHEIRO.
+      </p>
+
+      <p class="text">
+        Simples assim: você compra, aplica o método e sente a diferença.
+        Se em até <strong>7 dias</strong> você achar que não ficou claro, não ficou prático, ou não serviu pra você,
+        é só pedir o reembolso e pronto.
+      </p>
+
+      <div class="center" style="margin-top:18px;">
+        <img class="img" src="img/selos.png" alt="Selos: checkout seguro, garantia 7 dias, acesso imediato" style="max-width:900px;width:100%;border-radius:18px;">
+      </div>
+
+      <div class="center" style="margin-top:18px;">
+        <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+          QUERO COMPRAR COM GARANTIA
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <div id="faq" class="section">
+    <h2 class="center">FAQ</h2>
+
+    <details>
+      <summary>Eu sou iniciante. Vou entender?</summary>
+      <p class="text">
+        Sim. O material foi escrito em linguagem clara e com aplicação prática.
+        Você não precisa ser “atleta avançado” para usar — precisa apenas praticar.
+      </p>
+    </details>
+
+    <details>
+      <summary>Isso serve só para competição?</summary>
+      <p class="text">
+        Não. Serve para treinos e para competição. Na competição, você sente ainda mais o impacto do controle sob pressão.
+      </p>
+    </details>
+
+    <details>
+      <summary>Como eu recebo o eBook?</summary>
+      <p class="text">
+        A compra e o acesso são feitos pela Hotmart após a confirmação do pagamento.
+      </p>
+    </details>
+
+    <div class="center" style="margin-top:24px;">
+      <a class="btn" href="https://pay.hotmart.com/N104284821K" target="_blank" rel="noopener">
+        SIM, EU QUERO UM MÉTODO SIMPLES
+      </a>
+      <p class="micro">Clique e veja o checkout na Hotmart.</p>
+    </div>
+  </div>
+
+  <div class="footer center">
+    © Jô Aguiar • Treinamento Respiratório para Atletas de Jiu-Jitsu
+  </div>
+</div>
+
+</body>
+</html>
